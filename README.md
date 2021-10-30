@@ -78,6 +78,13 @@ CREATE TABLE `user` (
 
 ### Clone .env.example to .env then input your config
 
+### cd into jwt-for-authentication and create your private key and public key
+```shell
+ssh-keygen -t rsa -b 4096 -m PEM -f jwtRS256.key
+# Don't add passphrase
+openssl rsa -in jwtRS256.key -pubout -outform PEM -out jwtRS256.key.pub
+```
+
 ### Finally, run the script file and enjoy
 
 ```sh
