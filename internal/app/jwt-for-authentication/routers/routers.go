@@ -6,19 +6,19 @@ import (
 	"github.com/nogopy/jwt-for-authentication/internal/app/jwt-for-authentication/middleware"
 )
 
-type TikiNowRouter struct {
+type Router struct {
 	GinEngie   *gin.Engine
 	Controller *v1.AuthControllers
 }
 
-func NewTikiNowRouter(g *gin.Engine, c *v1.AuthControllers) *TikiNowRouter {
-	return &TikiNowRouter{
+func NewRouter(g *gin.Engine, c *v1.AuthControllers) *Router {
+	return &Router{
 		GinEngie:   g,
 		Controller: c,
 	}
 }
 
-func (r *TikiNowRouter) SetUpRouter() {
+func (r *Router) SetUpRouter() {
 	router := r.GinEngie.Group("v1")
 	{
 		router.POST("auth/users/register", r.Controller.RegisterHandler)

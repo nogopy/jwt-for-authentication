@@ -51,6 +51,6 @@ func SetupHttpServer(db *gorm.DB, ginEngie *gin.Engine) {
 
 	controller := v1.NewAuthControllers(registerService, loginService, getUserInfoService, getPublicResourceService)
 
-	router := routers.NewTikiNowRouter(ginEngie, controller)
+	router := routers.NewRouter(ginEngie, controller)
 	router.SetUpRouter()
 }
