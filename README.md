@@ -1,6 +1,7 @@
 # Nogopy
 
 # Hi, this a demo of how to use jwt for authentication in microservices
+# Keep in mind that this is a demo of how to authenticate using jwt, we don't cover any issues such as sql injection, you can easily produce it to hack the server.
 
 ## Project layout
 
@@ -90,6 +91,12 @@ your preferred browser.
 127.0.0.1:8080
 ```
 ![alt text for screen readers](ping.png "Run in system preference")
+
+# ------------------------------------------------------------
+# What is jwt and how it works https://jwt.io/introduction
+# Jwt flow
+![alt text for screen readers](jwtFlow.jpeg "Run in system preference")
+Source: https://www.freecodecamp.org/news/how-to-setup-jwt-authorization-and-authentication-in-spring/
 
 [//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen)
 
