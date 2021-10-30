@@ -1,0 +1,19 @@
+# DS_Store
+*.DS_Store
+
+# Gin bin
+gin-bin
+
+# Office Temp Files
+~$*
+
+# Coverage Test
+coverage
+
+fmtcoverage.html
+cover.html
+
+.vscode/*
+
+.env
+.idea/*
