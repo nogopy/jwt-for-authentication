@@ -23,7 +23,7 @@ func NewLoginService(
 	}
 }
 
-type CustomClaimsExample struct {
+type CustomClaims struct {
 	*jwt.StandardClaims
 	UserId int `json:"user_id"`
 }
@@ -36,8 +36,8 @@ func (service *LoginService) Login(ctx *gin.Context) (LoginResultSchema, error) 
 		return LoginResultSchema{}, err
 	}
 
-	verifyBytes, err := ioutil.ReadFile("/Users/lap01651/nogopy/jwt-for-authentication/jwtRS256.key")
 	// TODO: Please set private key in your env, not in your code!
+	verifyBytes, err := ioutil.ReadFile("/Users/lap01651/nogopy/jwt-for-authentication/jwtRS256.key")
 	verifyKey, err := jwt.ParseRSAPrivateKeyFromPEM(verifyBytes)
 
 	if err != nil {
@@ -60,11 +60,11 @@ func (service *LoginService) Login(ctx *gin.Context) (LoginResultSchema, error) 
 
 	t := jwt.New(jwt.GetSigningMethod("RS256"))
 
-	t.Claims = &CustomClaimsExample{
+	t.Claims = &CustomClaims{
 		&jwt.StandardClaims{
 			Issuer:    "nocopy",
 			IssuedAt:  time.Now().Unix(),
-			ExpiresAt: time.Now().Add(time.Minute * 10).Unix(),
+			ExpiresAt: time.Now().Add(time.Second * 10).Unix(),
 		},
 		user.ID,
 	}
@@ -76,7 +76,7 @@ func (service *LoginService) Login(ctx *gin.Context) (LoginResultSchema, error) 
 		RefreshToken: "not ready yet",
 		TokenType:    "bearer",
 		ExpiresIn:    600,
-		ExpiredAt:    int(time.Now().Add(time.Minute * 10).Unix()),
+		ExpiredAt:    int(time.Now().Add(time.Second * 10).Unix()),
 		UserId:       user.ID,
 	}, nil
 }

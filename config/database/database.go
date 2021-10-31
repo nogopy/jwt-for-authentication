@@ -33,7 +33,7 @@ func NewDatabase() *gorm.DB {
 
 func GetGormConfig() *gorm.Config {
 	logMode := logger.Silent
-	if env.GetConfiguration().AppEnv == "uat" {
+	if env.GetConfiguration().AppEnv == "LOCAL" {
 		logMode = logger.Info
 	}
 

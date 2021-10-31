@@ -28,7 +28,7 @@ func main() {
 	db := database.NewDatabase()
 	conn, err := db.DB()
 
-	if env.GetConfiguration().AppEnv != "uat" {
+	if env.GetConfiguration().AppEnv != "LOCAL" {
 		conn.SetMaxOpenConns(100)
 		conn.SetMaxIdleConns(20)
 		conn.SetConnMaxLifetime(300 * time.Second)
@@ -39,7 +39,7 @@ func main() {
 	}
 	defer conn.Close()
 
-	if env.GetConfiguration().AppEnv != "uat" {
+	if env.GetConfiguration().AppEnv != "LOCAL" {
 		gin.SetMode(gin.ReleaseMode)
 	}
 

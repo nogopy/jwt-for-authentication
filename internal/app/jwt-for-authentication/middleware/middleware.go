@@ -19,8 +19,8 @@ func Authentication() gin.HandlerFunc {
 		}
 
 		if tokenString != "" {
+			// TODO: Please set public key in your env, not in your code!
 			verifyBytes, err := ioutil.ReadFile("/Users/lap01651/nogopy/jwt-for-authentication/jwtRS256.key.pub")
-			// TODO: Please set private key in your env, not in your code!
 			verifyKey, err := jwt.ParseRSAPublicKeyFromPEM(verifyBytes)
 			if err != nil {
 				abort(c)
